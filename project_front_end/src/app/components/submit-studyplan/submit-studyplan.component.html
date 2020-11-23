@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="margin-20">
+        <h2>Study Plan</h2>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+           id="name"
+           class="form-control"
+           placeholder="Name"
+           name="name"
+           formControlName="name"
+           required>
+           <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+              Name is required (minimum 5 characters).
+            </small>
+         </div>
+         <!--StudyPlans-->
+         <div formArrayName="studyPlans">
+    <div *ngFor="let userFormGroup of myForm.get('studyPlans')['controls']; let i=index">
+      <fieldset>
+        <legend>
+          <h4>
+            Course {{i+1}}:
+          </h4>
+        </legend>
+        <div [formGroup]="userFormGroup" class="form-inline">
+          <div class="form-group row">
+            <div class="col-xs-1">
+              <label class="col-form-label" for="dcode">Department Code</label>
+              <input type="text"
+                     class="form-control mb-2 mr-sm-2 mb-sm-0"
+                     id="dcode"
+                     placeholder="CS"
+                     name="dcode"
+                     formControlName="dcode"
+                     required>
+            </div>
+
+            <div class="col-xs-1">
+              <label class="col-form-label" for="cno">Course Number</label>
+              <input type="number"
+                     class="form-control mb-2 mr-sm-2 mb-sm-0"
+                     id="cno"
+                     placeholder=530
+                     name="cno"
+                     formControlName="cno"
+                     required>
+            </div>
+
+            <div class="col-xs-2">
+              <label class="col-form-label" for="cname">Course Name</label>
+              <input type="text"
+                     class="form-control mb-2 mr-sm-2 mb-sm-0"
+                     id="cname"
+                     placeholder="Mathematical Foundations of Computer Science"
+                     name="cname"
+                     formControlName="cname"
+                     required>
+            </div>
+
+            <div class="col-xs-1">
+              <label class="col-form-label" for="grade">Grade</label>
+              <input type="text"
+                     class="form-control mb-2 mr-sm-2 mb-sm-0"
+                     id="grade"
+                     placeholder="A"
+                     name="grade"
+                     formControlName="grade"
+                     required>
+            </div>
+
+            <div class="col-xs-2">
+              <label class="col-form-label" for="grade">Area</label>
+              <select class="custom-select form-control mb-2 mr-sm-2 mb-sm-0" (change)="updateArea($event.target.value)"
+                   formControlName="area">
+                   <option value="">Choose...</option>
+                   <option *ngFor="let area of area_val" value="{{area}}">{{area}}
+                   </option>
+                 </select>
+            </div>
+
+            <div class="col-xs-2">
+              <button style="margin-top:36px;" type="button" class="btn btn-danger" (click)="deleteStudyPlans(i)">
+                <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Courses
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </fieldset>
+    </div>
+  </div>
+
+
+
+  <div class="buttonsRow" style="margin-top:50px;">
+    <button style="margin-left:-15px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm" (click)="addStudyPlans()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Course
+    </button>
+  </div>
+
+
+
+  <div class="btn-toolbar float-right" role="toolbar" style="margin-top:50px;">
+    <div class="btn-group" role="group" aria-label="Submit">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Cancel">
+      <button type="button" class="btn btn-danger" (click)="resetForm()">Cancel</button>
+    </div>
+  </div>
+</form>
+
+  <pre>{{myForm.value | json}}</pre>
+</div>
+</div>
+</div>
