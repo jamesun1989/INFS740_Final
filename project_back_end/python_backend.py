@@ -13,12 +13,6 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/INFS740db'
 
 mongo = PyMongo(app)
 
-def set_default(obj):
-    if isinstance(obj, set):
-        return list(obj)
-    raise TypeError
-
-
 @app.route('/create', methods=['POST'])
 def add_studyplan():
 	db_operations_user = mongo.db.students
