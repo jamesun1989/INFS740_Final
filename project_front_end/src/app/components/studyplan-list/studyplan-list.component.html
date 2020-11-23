@@ -1,9 +1,9 @@
 <div class="container">
   <!-- No data message -->
-  <p *ngIf="studyPlan.length <= 0" class="no-data text-center">No stud yplan added</p>
+  <p *ngIf="studyPlan.length <= 0" class="no-data text-center">No study plan added</p>
 
-  <!-- Employee list -->
   <table class="table table-bordered" *ngIf="studyPlan.length > 0">
+    <h2>The classes has been taken</h2>
     <thead class="table-success">
       <tr>
         <th scope="col">Department Code</th>
@@ -23,4 +23,6 @@
       </tr>
     </tbody>
   </table>
+
+  <h2>The recommended courses list</h2>
 </div>

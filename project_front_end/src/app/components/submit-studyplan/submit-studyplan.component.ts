@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { DegreeplannerService } from 'src/app/services/degreeplanner.service';
-import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,6 +23,14 @@ export class SubmitStudyPlanComponent {
     ]
   };
 
+  data_area: Array<any> = [
+    { area: 'Theoretical Computer Science', value: 'Theoretical Computer Science'},
+    { area: 'Systems and Networks', value: 'Systems and Networks'},
+    { area: 'Artificial Intelligence and Databases', value: 'Artificial Intelligence and Databases'},
+    { area: 'Programming Languages and Software Engineering', value: 'Programming Languages and Software Engineering'},
+    { area: 'Computer Vision', value: 'Computer Vision'}
+  ];
+
   myForm: FormGroup;
   submitted = false;
   area_val:any = ['Theoretical Computer Science', 'Systems and Networks', 'Artificial Intelligence and Databases', 'Programming Languages and Software Engineering', 'Computer Vision']
@@ -32,9 +40,11 @@ export class SubmitStudyPlanComponent {
     this.myForm = this.fb.group({
       name: [""],
       studyPlans: this.fb.array([]),
+      interestedArea: this.fb.array([], [Validators.required, Validators.minLength(1), Validators.maxLength(3)])
     });
 
     this.setStudyPlans();
+    //this.setCheckedArea();
   }
 
   updateArea(e){
@@ -76,6 +86,11 @@ export class SubmitStudyPlanComponent {
     });
   }
 
+  /*setCheckedArea() {
+    const checkArea: FormArray = this.myForm.get('checkArray') as FormArray;
+    this.data.checkArea.
+  }*/
+
   resetForm(){
     this.myForm.reset();
   }
@@ -91,4 +106,22 @@ export class SubmitStudyPlanComponent {
         }
       );
   }
+
+onCheckboxChange(e) {
+  //let control = <FormArray>this.myForm.controls.checkArea;
+  let interestedArea = <FormArray>this.myForm.get('interestedArea');
+
+  if (e.target.checked) {
+    interestedArea.push(new FormControl(e.target.value));
+  } else {
+    let i: number = 0;
+    interestedArea.controls.forEach((item: FormControl) => {
+      if (item.value == e.target.value) {
+        interestedArea.removeAt(i);
+        return;
+      }
+      i++;
+    });
+  }
+}
 }

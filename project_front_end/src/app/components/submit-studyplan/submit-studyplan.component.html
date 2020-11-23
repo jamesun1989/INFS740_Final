@@ -76,7 +76,7 @@
             <div class="col-xs-2">
               <label class="col-form-label" for="grade">Area</label>
               <select class="custom-select form-control mb-2 mr-sm-2 mb-sm-0" (change)="updateArea($event.target.value)"
-                   formControlName="area">
+                   formControlName="area" required>
                    <option value="">Choose...</option>
                    <option *ngFor="let area of area_val" value="{{area}}">{{area}}
                    </option>
@@ -105,11 +105,23 @@
     </button>
   </div>
 
+  <div class="col" style="margin-top:100px;">
+    <h4>Please select <span style="color: #ff0000">at most 3</span> areas in Computer Science</h4>
+    <div *ngFor="let data of data_area; let i=index">
+      <label>
+        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+        {{data.area}}
+      </label>
+    </div>
 
+    <p class="error" *ngIf="this.myForm.get('interestedArea')['controls'].length > 3">
+      You can only select at most 3 intereted areas for Computer Science
+    </p>
+  </div>
 
   <div class="btn-toolbar float-right" role="toolbar" style="margin-top:50px;">
     <div class="btn-group" role="group" aria-label="Submit">
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button [disabled]="!myForm.valid" type="submit" class="btn btn-success">Submit</button>
     </div>
     <div class="btn-group" role="group" aria-label="Cancel">
       <button type="button" class="btn btn-danger" (click)="resetForm()">Cancel</button>
