@@ -21,4 +21,14 @@ export class DegreeplannerService {
     let base_url = `${this.api_url}/getallSP`;
     return this.http.get(base_url);
   }
+
+  getRecommendList() {
+    let base_url = `${this.api_url}/getrecommendcourse`;
+    return this.http.get(base_url);
+  }
+
+  deleteAllSP() {
+    let base_url = `${this.api_url}/deleteallSP`;
+    return this.http.delete(base_url);
+  }
 }

@@ -1,9 +1,8 @@
 <div class="container">
-  <!-- No data message -->
+  <h2>The courses that have been taken</h2>
   <p *ngIf="studyPlan.length <= 0" class="no-data text-center">No study plan added</p>
 
   <table class="table table-bordered" *ngIf="studyPlan.length > 0">
-    <h2>The classes has been taken</h2>
     <thead class="table-success">
       <tr>
         <th scope="col">Department Code</th>
@@ -25,4 +24,30 @@
   </table>
 
   <h2>The recommended courses list</h2>
+  <p *ngIf="recommendedList.length <= 0" class="no-data text-center">Congrats! You have satisfies all reqirements</p>
+
+  <table class="table table-bordered" *ngIf="recommendedList.length > 0">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">Department Code</th>
+        <th scope="col">Course Number</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Course Area</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rm of recommendedList; let i = index">
+        <th scope="row">{{rm.dcode}}</th>
+        <td>{{rm.cno}}</td>
+        <td>{{rm.cname}}</td>
+        <td>{{rm.area}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="col-xs-2">
+    <button style="margin-top:36px;" type="button" class="btn btn-danger" (click)="onClick()">
+      <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove All Study Plans and go back to first page
+    </button>
+  </div>
 </div>

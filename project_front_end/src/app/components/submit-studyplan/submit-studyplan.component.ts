@@ -40,11 +40,20 @@ export class SubmitStudyPlanComponent {
     this.myForm = this.fb.group({
       name: [""],
       studyPlans: this.fb.array([]),
-      interestedArea: this.fb.array([], [Validators.required, Validators.minLength(1), Validators.maxLength(3)])
+      interestedArea: this.fb.array([], [Validators.required, Validators.minLength(1), Validators.maxLength(3)]),
+      cs530_cond: ["1"],
+      cs531_cond: ["1"]
     });
 
     this.setStudyPlans();
-    //this.setCheckedArea();
+  }
+
+  get rdutton() {
+    return this.myForm.get('cs530_cond');
+  }
+
+  get rdbutton1() {
+    return this.myForm.get('cs531_cond');
   }
 
   updateArea(e){
@@ -86,11 +95,6 @@ export class SubmitStudyPlanComponent {
     });
   }
 
-  /*setCheckedArea() {
-    const checkArea: FormArray = this.myForm.get('checkArray') as FormArray;
-    this.data.checkArea.
-  }*/
-
   resetForm(){
     this.myForm.reset();
   }
@@ -108,7 +112,6 @@ export class SubmitStudyPlanComponent {
   }
 
 onCheckboxChange(e) {
-  //let control = <FormArray>this.myForm.controls.checkArea;
   let interestedArea = <FormArray>this.myForm.get('interestedArea');
 
   if (e.target.checked) {

@@ -119,6 +119,46 @@
     </p>
   </div>
 
+  <div class="group-gap" style="margin-top:100px;">
+    <h5 class="mb-3">CS530 situation</h5>
+    <div class="d-block my-3">
+      <div class="custom-control custom-radio">
+        <input id="taken" type="radio" class="custom-control-input" value="1" name="cs530_cond" formControlName="cs530_cond">
+        <label class="custom-control-label" for="taken">Taken</label>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input id="ntaken" type="radio" class="custom-control-input" value="0" name="cs530_cond" formControlName="cs530_cond">
+        <label class="custom-control-label" for="ntaken">Not taken</label>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input id="testout" type="radio" class="custom-control-input" value="2" name="cs530_cond" formControlName="cs530_cond">
+        <label class="custom-control-label" for="testout">Tested Out</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-gap" style="margin-top:100px;">
+    <h5 class="mb-3">CS531 situation</h5>
+    <div class="d-block my-3">
+      <div class="custom-control custom-radio">
+        <input id="taken1" type="radio" class="custom-control-input" value="1" name="cs531_cond" formControlName="cs531_cond">
+        <label class="custom-control-label" for="taken1">Taken</label>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input id="ntaken1" type="radio" class="custom-control-input" value="0" name="cs531_cond" formControlName="cs531_cond">
+        <label class="custom-control-label" for="ntaken1">Not taken</label>
+      </div>
+
+      <div class="custom-control custom-radio">
+        <input id="testout1" type="radio" class="custom-control-input" value="2" name="cs531_cond" formControlName="cs531_cond">
+        <label class="custom-control-label" for="testout1">Tested Out</label>
+      </div>
+    </div>
+  </div>
+
   <div class="btn-toolbar float-right" role="toolbar" style="margin-top:50px;">
     <div class="btn-group" role="group" aria-label="Submit">
       <button [disabled]="!myForm.valid" type="submit" class="btn btn-success">Submit</button>
