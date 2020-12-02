@@ -1,12 +1,13 @@
-<div class="container">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="margin-20">
+      <div class="margin-20" id="topbar">
         <h2>Study Plan</h2>
       </div>
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="name">Name</label>
+        <div class="form-group" id="inputname">
+          <label for="name"><b>Name:</b></label>
           <input type="text"
            id="name"
            class="form-control"
@@ -14,31 +15,31 @@
            name="name"
            formControlName="name"
            required>
-           <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+          <small *ngIf="!myForm.controls.name.valid && (myForm.controls.name.dirty || myForm.controls.name.touched)" class="text-danger">
               Name is required (minimum 5 characters).
-            </small>
-         </div>
+          </small>
+        </div>
          <!--StudyPlans-->
          <div formArrayName="studyPlans">
-    <div *ngFor="let userFormGroup of myForm.get('studyPlans')['controls']; let i=index">
-      <fieldset>
-        <legend>
-          <h4>
-            Course {{i+1}}:
-          </h4>
-        </legend>
-        <div [formGroup]="userFormGroup" class="form-inline">
-          <div class="form-group row">
-            <div class="col-xs-1">
-              <label class="col-form-label" for="dcode">Department Code</label>
-              <input type="text"
-                     class="form-control mb-2 mr-sm-2 mb-sm-0"
-                     id="dcode"
-                     placeholder="CS"
-                     name="dcode"
-                     formControlName="dcode"
-                     required>
-            </div>
+          <div *ngFor="let userFormGroup of myForm.get('studyPlans')['controls']; let i=index">
+          <fieldset class="field-set">
+            <legend>
+              <h4><b>
+                Course {{i+1}}:
+              </b></h4>
+            </legend>
+          <div [formGroup]="userFormGroup" class="form-inline">
+            <div class="form-group row">
+              <div class="col-xs-1">
+                <label class="col-form-label" for="dcode">Department Code</label>
+                <input type="text"
+                      class="form-control mb-2 mr-sm-2 mb-sm-0"
+                      id="dcode"
+                      placeholder="CS"
+                      name="dcode"
+                      formControlName="dcode"
+                      required>
+              </div>
 
             <div class="col-xs-1">
               <label class="col-form-label" for="cno">Course Number</label>
@@ -84,7 +85,7 @@
             </div>
 
             <div class="col-xs-2">
-              <button style="margin-top:36px;" type="button" class="btn btn-danger" (click)="deleteStudyPlans(i)">
+              <button type="button" class="btn btn-danger" (click)="deleteStudyPlans(i)">
                 <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Courses
               </button>
             </div>
@@ -99,13 +100,13 @@
 
 
 
-  <div class="buttonsRow" style="margin-top:50px;">
-    <button style="margin-left:-15px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm" (click)="addStudyPlans()">
+  <div class="buttonsRow">
+    <button type="button" class="btn btn-primary btn-sm" (click)="addStudyPlans()">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Course
     </button>
   </div>
 
-  <div class="col" style="margin-top:100px;">
+  <div class="col">
     <h4>Please select <span style="color: #ff0000">at most 3</span> areas in Computer Science</h4>
     <div *ngFor="let data of data_area; let i=index">
       <label>
@@ -119,7 +120,7 @@
     </p>
   </div>
 
-  <div class="group-gap" style="margin-top:100px;">
+  <div class="group-gap" id="sel-right">
     <h5 class="mb-3">CS530 situation</h5>
     <div class="d-block my-3">
       <div class="custom-control custom-radio">
@@ -139,7 +140,7 @@
     </div>
   </div>
 
-  <div class="group-gap" style="margin-top:100px;">
+  <div class="group-gap" id="sel-right">
     <h5 class="mb-3">CS531 situation</h5>
     <div class="d-block my-3">
       <div class="custom-control custom-radio">
@@ -159,7 +160,7 @@
     </div>
   </div>
 
-  <div class="btn-toolbar float-right" role="toolbar" style="margin-top:50px;">
+  <div class="w3-bar" role="toolbar">
     <div class="btn-group" role="group" aria-label="Submit">
       <button [disabled]="!myForm.valid" type="submit" class="btn btn-success">Submit</button>
     </div>
@@ -169,7 +170,6 @@
   </div>
 </form>
 
-  <pre>{{myForm.value | json}}</pre>
 </div>
 </div>
 </div>

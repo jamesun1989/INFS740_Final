@@ -1,1 +1,67 @@
+#topbar {
+    text-align: center;
+    padding-left: 20px;
+    background-color: white;
+    border: 5px #006633 solid;
+    box-shadow: 5px 10px #006633;
+}
 
+.form-group {
+    text-align: left;
+    margin: 30px;
+    font-size: 25px;
+}
+
+.form-group.row{
+    font-size: 15px;
+}
+
+.text-danger{
+    font-size: 13px;
+}
+
+h4{
+    font-size: 20px;
+}
+
+legend{
+    margin: auto;
+}
+.field-set{
+    border:3px;
+    border-color: #006633;
+    border-style: solid;
+}
+
+.col{
+    align-self: center;
+    margin-top: 100px;
+    margin-left: 600px;
+}
+
+.btn{
+    text-align: center;
+    margin-top: 50px;
+    /* margin-left: 50%; */
+}
+    .btn-danger{
+        margin-top:50px;
+    }
+
+    .buttonsRow{
+        margin-left:750px;
+        margin-bottom:5px;
+    }
+
+    .btn-group{
+        padding: 14px 40px;
+    }
+
+.group-gap{
+    margin-top:50px;
+    margin-left: 750px;
+}
+
+.w3-bar{
+    margin-left: 650px;
+}

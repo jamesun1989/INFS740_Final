@@ -38,11 +38,11 @@ export class SubmitStudyPlanComponent {
   constructor(private fb: FormBuilder, private dpService: DegreeplannerService, private router: Router,
     private ngZone: NgZone) {
     this.myForm = this.fb.group({
-      name: [""],
+      name: ["", [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       studyPlans: this.fb.array([]),
       interestedArea: this.fb.array([], [Validators.required, Validators.minLength(1), Validators.maxLength(3)]),
-      cs530_cond: ["1"],
-      cs531_cond: ["1"]
+      cs530_cond: ["1", Validators.required],
+      cs531_cond: ["1", Validators.required]
     });
 
     this.setStudyPlans();
