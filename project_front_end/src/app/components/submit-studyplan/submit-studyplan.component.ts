@@ -23,6 +23,7 @@ export class SubmitStudyPlanComponent {
     ]
   };
 
+  //check box
   data_area: Array<any> = [
     { area: 'Theoretical Computer Science', value: 'Theoretical Computer Science'},
     { area: 'Systems and Networks', value: 'Systems and Networks'},
@@ -33,6 +34,7 @@ export class SubmitStudyPlanComponent {
 
   myForm: FormGroup;
   submitted = false;
+  //drop down list
   area_val:any = ['Theoretical Computer Science', 'Systems and Networks', 'Artificial Intelligence and Databases', 'Programming Languages and Software Engineering', 'Computer Vision']
 
   constructor(private fb: FormBuilder, private dpService: DegreeplannerService, private router: Router,
@@ -56,12 +58,14 @@ export class SubmitStudyPlanComponent {
     return this.myForm.get('cs531_cond');
   }
 
+  //dropdown list
   updateArea(e){
     this.myForm.controls.studyPlans.get('area').setValue(e, {
       onlySelf: true
     })
   }
 
+  //add study plan dynamically
   addStudyPlans() {
     let control = <FormArray>this.myForm.controls.studyPlans;
     control.push(
@@ -80,6 +84,7 @@ export class SubmitStudyPlanComponent {
     control.removeAt(index);
   }
 
+  //push these data to FormBuilder myForm
   setStudyPlans() {
     let control = <FormArray>this.myForm.controls.studyPlans;
     this.data.studyPlans.forEach(x => {
@@ -95,6 +100,7 @@ export class SubmitStudyPlanComponent {
     });
   }
 
+//clear all data on the form
   resetForm(){
     this.myForm.reset();
   }

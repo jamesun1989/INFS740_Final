@@ -1,0 +1,12 @@
+First of all:
+run npm install
+
+Back end:
+1. change to INFS740_Project\project_back_end
+2. make sure python 3 has already installed on your PC, it run successfully on python 3.6.  Run python python_backend.py
+3. make sure mongodb is already installed and ready for connecting
+
+Front end:
+1. change to INFS740_Project\project_front_end
+2. run ng serve --open
+3. the web application will be automatically opened on your browser

@@ -28,15 +28,6 @@ export class StudyPlanListComponent {
     })
   }
 
-  /*
-
-  deleteAllStudyPlans(){
-    this.dgService.deleteAllSP().subscribe((data) => {
-      this.getStudyPlans()
-    })
-  }
-  */
-
   onClick() {
       this.dgService.deleteAllSP().subscribe(
         (res) => {
